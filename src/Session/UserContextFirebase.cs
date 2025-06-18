@@ -1,10 +1,9 @@
-﻿using IATec.Shared.Api.Authentication.Contracts;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 
 namespace IATec.Shared.Api.Authentication.Session;
 
-public class UserContextFirebase(IHttpContextAccessor httpContextAccessor) : IUserContext
+public class UserContextFirebase(IHttpContextAccessor httpContextAccessor)
 {
     private const string FirebaseClaimType = "firebase";
 

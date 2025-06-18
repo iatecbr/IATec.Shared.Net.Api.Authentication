@@ -1,5 +1,4 @@
 ﻿using IATec.Shared.Api.Authentication.Configurations.Options;
-using IATec.Shared.Api.Authentication.Contracts;
 using IATec.Shared.Api.Authentication.Session;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -36,7 +35,7 @@ public static class AuthenticationExtension
             });
 
         services.AddHttpContextAccessor();
-        services.AddScoped<IUserContext, UserContextFirebase>();
+        services.AddScoped<UserContextFirebase>();
 
         return services;
     }
