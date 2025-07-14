@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Security.Claims;
+using IATec.Shared.Api.Authentication.Services;
 
 namespace IATec.Shared.Api.Authentication.Extension;
 
@@ -31,6 +33,15 @@ public static class AuthenticationExtension
                     ValidAudience = jwtOptions?.ProjectId,
                     ValidateLifetime = true,
                     RoleClaimType = ClaimTypes.Role
+                };
+                options.Events = new JwtBearerEvents
+                {
+                    OnTokenValidated = async context =>
+                    {
+                        var token = context.SecurityToken.Id;
+                        var tokenStore = context.HttpContext.RequestServices.GetRequiredService<TokenStoreService>();
+                        await tokenStore.StoreTokenAsync(token, "token-validated");
+                    }
                 };
             });
 

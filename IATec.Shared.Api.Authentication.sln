@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IATec.Shared.Api.Authentication", "src\IATec.Shared.Api.Authentication.csproj", "{F61D46FB-6298-4105-A849-A889782E8DC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IATec.Shared.Net.Api.Authentication.Tests", "IATec.Shared.Net.Api.Authentication.Tests\IATec.Shared.Net.Api.Authentication.Tests.csproj", "{46FD2801-A638-4245-ADC0-D4E63FE15155}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,6 +14,10 @@ Global
 		{F61D46FB-6298-4105-A849-A889782E8DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F61D46FB-6298-4105-A849-A889782E8DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F61D46FB-6298-4105-A849-A889782E8DC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FD2801-A638-4245-ADC0-D4E63FE15155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FD2801-A638-4245-ADC0-D4E63FE15155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FD2801-A638-4245-ADC0-D4E63FE15155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FD2801-A638-4245-ADC0-D4E63FE15155}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
