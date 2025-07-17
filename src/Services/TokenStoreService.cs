@@ -1,22 +1,17 @@
-﻿using Microsoft.Extensions.Caching.Distributed;
+﻿using IATec.Shared.Api.Authentication.Configurations.Options;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Options;
 
 namespace IATec.Shared.Api.Authentication.Services;
-public class TokenStoreService
-{
-    private readonly IDistributedCache _cache;
-
-    public TokenStoreService(IDistributedCache cache)
-    {
-        _cache = cache;
-    }
-
+public class TokenStoreService(IDistributedCache cache, IOptions<CacheOptions> cacheOptions)
+{    
     public async Task StoreTokenAsync(string token, string value)
     {
         var options = new DistributedCacheEntryOptions
         {
-            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(15)
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(cacheOptions.Value.Expiration)
         };
 
-        await _cache.SetStringAsync(token, value, options);
+        await cache.SetStringAsync(token, value, options);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace IATec.Shared.Api.Authentication.Configurations.Options;
 
-public class CacheOption
+public class CacheOptions
 {
     public const string Key = "Cache";
     public string InstanceName { get; init; } = "Local";
