@@ -11,8 +11,8 @@ public static class CacheExtension
         IConfiguration configuration)
     {
         var cacheOptions = configuration
-            .GetSection(CacheOptions.Key)
-            .Get<CacheOptions>();
+            .GetSection(CacheOption.Key)
+            .Get<CacheOption>();
 
         if (cacheOptions!.UseDistributedCache)
         {
