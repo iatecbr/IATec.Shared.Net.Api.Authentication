@@ -2,16 +2,21 @@
 
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFrameworks>net9.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackageId>IATec.Shared.Api.Authentication</PackageId>
-		<Authors>Architecture Team</Authors>
+		<Title>IATec Shared Api Authentication</Title>
+		<Authors>IATec | Solution | Platform Team</Authors>
 		<Description>Project developed to help IATec teams to develop their projects faster.</Description>
-		<Copyright>@IATec</Copyright>
+		<Copyright>@IATec Solutions</Copyright>
 		<RootNamespace>IATec.Shared.Api.Authentication</RootNamespace>
-		<Version>1.0.1</Version>
+		<Version>1.0.2</Version>
 		<PackageIconUrl>https://assets-services-dev.sdasystems.org/images/icons/standard.library.icon.png</PackageIconUrl>
+		<PackageProjectUrl>https://github.com/iatecbr/IATec.Shared.Net.Api.Authentication</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/iatecbr/IATec.Shared.Net.Api.Authentication</RepositoryUrl>
+		<RepositoryType>Git</RepositoryType>
+		<PackageTags>net</PackageTags>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
