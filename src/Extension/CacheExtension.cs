@@ -14,17 +14,16 @@ public static class CacheExtension
             .GetSection(CacheOptions.Key)
             .Get<CacheOptions>();
 
-        if (cacheOptions!.UseDistributedCache)
-        {
-            services.AddDistributedMemoryCache();
-        }
-        else
+        if (cacheOptions!.RedisConnection != "")
         {
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = cacheOptions.RedisConnection;
+                options.InstanceName = cacheOptions.InstanceName;
             });
         }
+
+        else services.AddDistributedMemoryCache();
 
         return services;
     }

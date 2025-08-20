@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using IATec.Shared.Api.Authentication.Services;
+﻿using Bogus;
 using IATec.Shared.Api.Authentication.Extension;
 using Microsoft.Extensions.Caching.Distributed;
-using Bogus;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IATec.Shared.Net.Api.Authentication.Tests;
 public class MemoryCacheTest
@@ -23,23 +22,19 @@ public class MemoryCacheTest
             .Build();
 
         var services = new ServiceCollection();
-        services.AddCacheConfiguration(configuration);
-        services.AddScoped<TokenStoreService>();
-
-        var provider = services.BuildServiceProvider();
-
-        var tokenStore = provider.GetRequiredService<TokenStoreService>();
+        services.AddAuthenticationConfiguration(configuration);
+        
+        var provider = services.BuildServiceProvider();        
 
         string tokenName = faker.Person.FirstName;
         string tokenValue = faker.Random.Guid().ToString();
 
-        //Act
-        await tokenStore.StoreTokenAsync(tokenName, tokenValue);
-
         var cache = provider.GetRequiredService<IDistributedCache>();
+
+        await cache.SetStringAsync(tokenName, tokenValue);
         var result = await cache.GetStringAsync(tokenName);
 
         //Assert
         Assert.Equal(tokenValue, result);
-    }    
+    }
 }

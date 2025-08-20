@@ -1,10 +1,9 @@
-﻿using Testcontainers.Redis;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using IATec.Shared.Api.Authentication.Services;
+﻿using Bogus;
 using IATec.Shared.Api.Authentication.Extension;
 using Microsoft.Extensions.Caching.Distributed;
-using Bogus;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Testcontainers.Redis;
 
 namespace IATec.Shared.Net.Api.Authentication.Tests;
 public class CacheTokenTest : IAsyncLifetime
@@ -51,20 +50,17 @@ public class CacheTokenTest : IAsyncLifetime
             .Build();
 
         var services = new ServiceCollection();
-        services.AddCacheConfiguration(configuration);
-        services.AddScoped<TokenStoreService>();
+        
+        services.AddAuthenticationConfiguration(configuration);
 
         var provider = services.BuildServiceProvider();
-
-        var tokenStore = provider.GetRequiredService<TokenStoreService>();
 
         var tokenName = faker.Person.FirstName;
         var tokenValue = faker.Random.Guid().ToString();
 
-        //Act
-        await tokenStore.StoreTokenAsync(tokenName, tokenValue);
-
+        //Act    
         var cache = provider.GetRequiredService<IDistributedCache>();
+
         var result = await cache.GetStringAsync(tokenName);
 
         //Assert

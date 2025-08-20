@@ -3,8 +3,7 @@
 public class CacheOptions
 {
     public const string Key = "Cache";
-    public string InstanceName { get; init; } = "Local";
+    public string InstanceName { get; init; } = string.Empty;
     public int Expiration { get; init; } = 15;
-    public string RedisConnection { get; init; } = "localhost:6379,password=,ssl=false,abortConnect=false,connectTimeout=10000,defaultDatabase=0";
-    public bool UseDistributedCache { get; init; } = false;
+    public string RedisConnection { get; init; } = string.Empty;
 }
