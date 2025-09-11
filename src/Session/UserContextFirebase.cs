@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using IATec.Shared.Api.Authentication.DTOs;
+using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 
 namespace IATec.Shared.Api.Authentication.Session;
@@ -40,5 +41,15 @@ public class UserContextFirebase(IHttpContextAccessor httpContextAccessor)
             .FirstOrDefault(c => c.Type.Equals(claimType))?.Value;
 
         return claim ?? string.Empty;
+    }
+
+    public object? GetPerson()
+    {        
+        var personId = GetClaim("PersonId");
+
+        if (personId == null || personId == "")
+            return null;
+        
+        return new PersonDto(personId, GetClaim("FirstName"), GetClaim("LastName"));
     }
 }
