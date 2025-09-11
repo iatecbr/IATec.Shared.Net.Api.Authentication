@@ -48,7 +48,7 @@ public class UserContextFirebase(IHttpContextAccessor httpContextAccessor)
         var personId = GetClaim("PersonId");
 
         return string.IsNullOrEmpty(personId)
-        ? null
-        : new PersonDto(personId, GetClaim("FirstName"), GetClaim("LastName"));        
+            ? null
+            : new PersonDto(personId, GetClaim("FirstName"), GetClaim("LastName"));
     }
 }
