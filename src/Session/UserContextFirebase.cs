@@ -43,13 +43,12 @@ public class UserContextFirebase(IHttpContextAccessor httpContextAccessor)
         return claim ?? string.Empty;
     }
 
-    public object? GetPerson()
+    public PersonDto? GetPerson()
     {        
         var personId = GetClaim("PersonId");
 
-        if (personId == null || personId == "")
-            return null;
-        
-        return new PersonDto(personId, GetClaim("FirstName"), GetClaim("LastName"));
+        return string.IsNullOrEmpty(personId)
+        ? null
+        : new PersonDto(personId, GetClaim("FirstName"), GetClaim("LastName"));        
     }
 }
