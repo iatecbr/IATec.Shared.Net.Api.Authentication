@@ -8,7 +8,7 @@
 		<PackageId>IATec.Shared.Api.Authentication</PackageId>
 		<Title>IATec Shared Api Authentication</Title>
 		<Authors>IATec | Solution | Platform Team</Authors>
-		<Description>Project developed to help IATec teams to develop their projects faster. This version is specific for Dotnet 10.0</Description>
+		<Description>Project developed to help IATec teams to develop their projects faster. This version is specific for Dotnet 10.0, Libraries 10.x incompatibility with Dotnet 9.0</Description>
 		<Copyright>@IATec Solutions</Copyright>
 		<RootNamespace>IATec.Shared.Api.Authentication</RootNamespace>
 		<Version>1.1.0</Version>
