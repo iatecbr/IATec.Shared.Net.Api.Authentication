@@ -2,16 +2,16 @@
 
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<TargetFrameworks>net9.0</TargetFrameworks>
+		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackageId>IATec.Shared.Api.Authentication</PackageId>
 		<Title>IATec Shared Api Authentication</Title>
 		<Authors>IATec | Solution | Platform Team</Authors>
-		<Description>Project developed to help IATec teams to develop their projects faster.</Description>
+		<Description>Project developed to help IATec teams to develop their projects faster. This version is specific for Dotnet 10.0, Libraries 10.x incompatibility with Dotnet 9.0</Description>
 		<Copyright>@IATec Solutions</Copyright>
 		<RootNamespace>IATec.Shared.Api.Authentication</RootNamespace>
-		<Version>1.0.3</Version>
+		<Version>1.1.0</Version>
 		<PackageIconUrl>https://assets-services-dev.sdasystems.org/images/icons/standard.library.icon.png</PackageIconUrl>
 		<PackageProjectUrl>https://github.com/iatecbr/IATec.Shared.Net.Api.Authentication</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/iatecbr/IATec.Shared.Net.Api.Authentication</RepositoryUrl>
@@ -21,10 +21,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.6" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.6" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.6" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.1" />
 	</ItemGroup>
 
 </Project>
