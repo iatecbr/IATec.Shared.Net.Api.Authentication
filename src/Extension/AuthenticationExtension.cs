@@ -26,18 +26,31 @@ public static class AuthenticationExtension
             .GetSection(OAuthJwtOption.Key)
             .Get<OAuthJwtOption>();
 
+        if (jwtOptions is null)
+            throw new ArgumentNullException(nameof(configuration),
+                $"The '{OAuthJwtOption.Key}' configuration section is missing. Ensure both '{OAuthJwtOption.Key}:Authority' and '{OAuthJwtOption.Key}:ProjectId' are set in appsettings.json.");
+
+        if (string.IsNullOrWhiteSpace(jwtOptions.Authority))
+            throw new ArgumentNullException(nameof(jwtOptions.Authority),
+                $"'{OAuthJwtOption.Key}:Authority' is required and cannot be null or empty.");
+
+        if (string.IsNullOrWhiteSpace(jwtOptions.ProjectId))
+            throw new ArgumentNullException(nameof(jwtOptions.ProjectId),
+                $"'{OAuthJwtOption.Key}:ProjectId' is required and cannot be null or empty.");
+
+        var authority = $"{jwtOptions.Authority}{jwtOptions.ProjectId}";
+
         services
             .AddAuthentication()
             .AddJwtBearer(options =>
             {
-                var authority = $"{jwtOptions?.Authority}{jwtOptions?.ProjectId}";
                 options.Authority = authority;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidIssuer = authority,
                     ValidateAudience = true,
-                    ValidAudience = jwtOptions?.ProjectId,
+                    ValidAudience = jwtOptions.ProjectId,
                     ValidateLifetime = true,
                     RoleClaimType = ClaimTypes.Role
                 };

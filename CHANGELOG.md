@@ -12,11 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### BREAKING CHANGES
 - `OAuthJwtOption.Authority` and `OAuthJwtOption.ProjectId` changed from `string` (with `string.Empty` default) to `required string`.
 - `Identity.EmailList` changed from `List<string>?` to `List<string>` (removed the nullable annotation).
-- `UserContextFirebase.GetEmail()` now uses `First()` instead of `FirstOrDefault()` internally; callers should ensure the e-mail list is not empty.
+- `UserContextFirebase.GetEmail()` now explicitly verifies the e-mail list contains items before calling `First()`.
 
 ### ADDED
 - Complete XML documentation (summaries) added to all public classes, methods, and properties to improve IntelliSense support across consuming projects.
-- `GetPerson()` method introduced in `UserContextFirebase` to retrieve `PersonDto` claims.
+- Startup validation in `AddAuthenticationConfiguration()` to throw `ArgumentNullException` when `OAuthJwt` configuration section is missing or when `Authority`/`ProjectId` are empty.
 
 ### CHANGED
 - Updated Microsoft packages from `10.0.1` to `10.0.8`:
