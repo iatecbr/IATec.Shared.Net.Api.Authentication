@@ -20,7 +20,7 @@ public class UserContextFirebase(IHttpContextAccessor httpContextAccessor)
     {
         var claim = GetClaim(FirebaseClaimType);
         var firebaseClaim = JsonSerializer.Deserialize<FirebaseClaim>(claim);
-        if (firebaseClaim?.Identity?.EmailList != null)
+        if (firebaseClaim?.Identity?.EmailList is not null && firebaseClaim.Identity.EmailList.Count > 0)
             return firebaseClaim.Identity.EmailList.First();
 
         throw new ArgumentNullException($"{nameof(FirebaseClaim)} cannot be null!");
